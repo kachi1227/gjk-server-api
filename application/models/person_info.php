@@ -35,7 +35,7 @@ class Person_info extends CI_Model {
 			if(!$this->loc->addLocation(array('id'=>$array['entity_id'], 'lat'=>$array['lat'], 'lon'=>$array['lon'], 'address'=>$array['address']))) //if this fails
 				return false; //return false here, don't bother inserting other info
 		}
-		return $this->db->insert('person_info', $data);;	
+		return $this->db->insert('person_info', $data);	
 	}
 	
 	function editAccount($data) {

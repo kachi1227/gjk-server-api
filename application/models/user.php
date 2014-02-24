@@ -12,7 +12,7 @@ class User extends CI_Model {
 	*
 	* returns the new person on success, else returns false;
 	*/
-	function register($array, $tableType) {
+	function register($array) {
 
 		if($this->isEmailAlreadyPresent($array['email']))
 			return errorCode::USER_ALREADY_EXISTS;
@@ -27,9 +27,9 @@ class User extends CI_Model {
 			if($query->num_rows() > 0)
 				return $query->row_array();
 			 else
-				errorCode::logError(errorCode::ERROR_DATABASE, $this->db->_error_number(), $this->db->_error_message(), "user");
+				return errorCode::logError(errorCode::ERROR_DATABASE, $this->db->_error_number(), $this->db->_error_message(), "user");
 		} else
-			errorCode::logError(errorCode::ERROR_DATABASE, $this->db->_error_number(), $this->db->_error_message(), "user");
+			return errorCode::logError(errorCode::ERROR_DATABASE, $this->db->_error_number(), $this->db->_error_message(), "user");
 	}
 
 	function login($email, $password) {		
